@@ -6,11 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
     <title>Document</title>
+    <!-- Tencent Cloudbase -->
+    <script src="//imgcache.qq.com/qcloud/cloudbase-js-sdk/1.5.0/cloudbase.full.js"></script>
+    <script>
+        const app = cloudbase.init({
+            env: 'hello-cloudbase-2gzfdz8q05719790' // 您的环境id
+        })
+    </script>
 </head>
 
 <body>
-    <script src="template.js"></script>
+    <script src="color-classifier.js"></script>
+    <div id="container"></div>
 </body>
 
 </html>
