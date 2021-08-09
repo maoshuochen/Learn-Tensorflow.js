@@ -8,11 +8,9 @@ const colorName = [
     "purple",
     "brown",
 ];
+let data;
 
-async function sendData(data) {
-    const app = cloudbase.init({
-        env: "hello-cloudbase-2gzfdz8q05719790",
-    });
+async function sendData() {
     // Login
     const auth = app.auth();
     async function login() {
@@ -22,6 +20,7 @@ async function sendData(data) {
     }
     await login();
     // Write data
+    console.log(data);
     var db = app.database();
     db.collection("color-classifier")
         .add(data)
@@ -35,7 +34,7 @@ async function sendData(data) {
 function setup() {
     let cnv = createCanvas(320, 320);
     cnv.parent("container");
-    let data = pickColor();
+    pickColor();
     createBtns(data);
 }
 
@@ -45,23 +44,20 @@ function pickColor() {
     let b = floor(random(0, 255));
     background(r, g, b);
 
-    let data = {
+    data = {
         r: r,
         g: g,
         b: b,
     };
-    return data;
-    console.log(data);
 }
 
-function createBtns(data) {
+function createBtns() {
     let btns = [];
     for (let color of colorName) {
         let btn = createButton(color);
         btn.mousePressed(() => {
             data.color = color;
-            console.log(data);
-            sendData(data);
+            sendData();
         });
         btns.push(btn);
     }
