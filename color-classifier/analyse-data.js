@@ -18,14 +18,15 @@ async function setup() {
     console.log(data);
     // Draw
     noCanvas();
-    let size = 30;
+    let size = 60;
     let x = 0;
     let y = 0;
     let divs = [];
+    let color_p = createP("color");
+    let id_p = createP("user_id");
     let container = createDiv();
     container.style("display", "flex");
-    let color_p = createP();
-    let id_p = createP();
+
     for (let item of data) {
         let div = createDiv();
         div.parent(container);
@@ -35,7 +36,7 @@ async function setup() {
         div.mouseOver(() => {
             id_p.html(item._openid);
             color_p.html(item.color);
-            div.style("padding", "4px");
+            div.style("padding", `${size / 5}px`);
         });
         div.mouseOut(() => {
             div.style("padding", "0px");
