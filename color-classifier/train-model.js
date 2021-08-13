@@ -14,13 +14,13 @@ let r, g, b;
 let rSlider, gSlider, bSlider;
 
 async function setup() {
-    rSlider = createSlider(0, 255);
-    gSlider = createSlider(0, 255);
-    bSlider = createSlider(0, 255);
+    rSlider = select("#r-slider");
+    gSlider = select("#g-slider");
+    bSlider = select("#b-slider");
     resultP = createP("waiting for training");
     let data = await readData();
     let trainSet = handleData(data);
-    await train(trainSet.xs, trainSet.ys, 0.7, 100);
+    await train(trainSet.xs, trainSet.ys, 0.5, 100);
 }
 
 async function draw() {
@@ -31,6 +31,7 @@ async function draw() {
     background(r, g, b);
     if (modelReady) {
         result = await predict(r, g, b);
+        console.log(result);
         resultP.html(colorName[result]);
     }
 }

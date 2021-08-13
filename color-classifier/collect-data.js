@@ -9,6 +9,7 @@ const colorName = [
     "brown",
 ];
 let data;
+let container, btnContainer, rgbP;
 
 async function sendData() {
     // Login
@@ -32,8 +33,11 @@ async function sendData() {
 }
 
 function setup() {
-    let cnv = createCanvas(320, 320);
-    cnv.parent("container");
+    container = select("#container");
+    btnContainer = select("#btn-container");
+    rgbP = select("#RGB");
+    let cnv = createCanvas(480, 480);
+    cnv.parent(container);
     pickColor();
     createBtns(data);
 }
@@ -43,6 +47,7 @@ function pickColor() {
     let g = floor(random(0, 255));
     let b = floor(random(0, 255));
     background(r, g, b);
+    rgbP.html(`R:${r}    G:${g}    B:${b}`);
 
     data = {
         r: r,
@@ -55,6 +60,7 @@ function createBtns() {
     let btns = [];
     for (let color of colorName) {
         let btn = createButton(color);
+        btn.parent(btnContainer);
         btn.mousePressed(() => {
             data.color = color;
             sendData();

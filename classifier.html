@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
@@ -19,14 +18,21 @@
 </head>
 
 <body>
-    <div id="main">    
-        <div id="container"></div>
-        <p id="RGB"></p>
-        <div id="btn-container"></div>
-        <script src="color-classifier/collect-data.js"></script>
-        <a href="classifier.html">Go To Classifier</a>
+    <div>
+        <input type="range" id="r-slider" name="r-slider" min="0" max="255">
+        <label for="r-slider">R</label> 	
     </div>
-
+    <div>
+        <input type="range" id="g-slider" name="g-slider" min="0" max="255">
+        <label for="g-slider">G</label> 	
+    </div>
+    <div>
+        <input type="range" id="b-slider" name="b-slider" min="0" max="255">
+        <label for="b-slider">B</label> 
+    </div>
+    
+    <script src="color-classifier/train-model.js"></script>
+    <a href="index.html">collect-data</a>
 </body>
 
 </html>
